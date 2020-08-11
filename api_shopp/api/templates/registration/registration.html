@@ -1,0 +1,18 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class ="form-group">
+                <div class="container">
+                {{ user_register_form.as_p }}
+                {{ Customer_register_form.as_p }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" value="Register" class="btn btn-success">Sign Up</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

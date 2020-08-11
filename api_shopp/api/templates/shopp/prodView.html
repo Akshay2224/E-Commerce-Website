@@ -1,0 +1,30 @@
+{% extends 'shopp/basic.html' %}
+
+{% block title%} {{product.product_name}} - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <img src="/media/{{product.image}}" width="233px" height="385px">
+    </div>
+
+    </div>
+
+    <div class="col-md-20">
+        <h2 id = "namepr{{product.id}}" >{{product.product_name}}</h2>
+        <p><b>Rs.{{product.price}} </b></p>
+        <p>{{product.desc}}</p>
+        <h6>Sold By : {{product.seller_name}}</h6>
+
+    </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}
+

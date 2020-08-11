@@ -1,0 +1,101 @@
+{% extends 'shopp/basic2.html' %}
+{% block title%} Shopp.Com - Best Ecommerce Website{% endblock %}
+{% block css %}
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+.carousel-indicators .active {
+background-color: blue;
+}
+.col-md-3 img{
+width: 170px;
+height: 200px;
+}
+body .carousel-indicator li{
+background-color: blue;
+}
+body .carousel-indicators{
+bottom: -40px;
+}
+.carousel-indicators li {
+
+
+    background-color: #7270fc;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+padding-top: 222px;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+{% endblock %}
+{% block body %}
+{% load static %}
+
+<table class="table" xmlns="http://www.w3.org/1999/html">
+  <thead>
+    <tr class="bg-success"></tr>
+      <th scope="col">Name</th>
+      <th scope ="col">email</th>
+      <th scope ="col">City</th>
+     <th scope ="col">state</th>
+      <th scope ="col">zip_code</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Order</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product,prod,crecord,desc,sellername,all in allde %}
+     <div class="alert alert-danger" role="alert">
+
+         Welcome {{sellername}} !!!!
+         You have a Order of
+         <br>
+         <br>
+         Order   :  Name
+         <br>
+         {% for i,j in all.items %}
+         * {{i}} : {{j}}
+         <br>
+         {% endfor %}
+         <br>
+         <br>
+         Note :  For Adding your Products into the website mail the info with of the product with Proper Details.
+    </div>
+     {% for j in product %}
+
+      <td class="bg-warning">{{j.name}}</td>
+      <td class="bg-success">{{j.email}}</td>
+      <td class="bg-success">{{j.city}}</td>
+        <td class="bg-warning">{{j.state}}</td>
+        <td class="bg-warning">{{j.zip_code}}</td>
+      <td class="bg-info">{{j.address}}</td>
+      <td class="bg-info">{{j.phone}}</td>
+      <td class="bg-danger">{{j.items_json}}</td>
+      <form action="{% url 'api:thanks' %}" method="post">{% csrf_token %}
+      <td class="bg-success">
+          <div class="form-group">
+            <input type="text" class="form-control" id="status" size="400" name="status" title="status" placeholder="Enter Your Status with the Company Name">
+              <input type="submit"  class="btn btn-primary">
+           </div>
+      </td>
+      </form>
+    </tr>
+      {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+    </form>
+{% endblock %}
